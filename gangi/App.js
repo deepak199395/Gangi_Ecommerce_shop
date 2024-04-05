@@ -13,12 +13,13 @@ import CartScreen from './src/Screens/CartScreen';
 import SearchBar from './src/Screens/SearchBar';
 import Blog from './src/Screens/Blog';
 import TrackOrder from './src/Screens/TrackOrder';
+import SingleProducts from './src/Screens/SingleProducts';
 
 const App = () => {
   const Stack = createNativeStackNavigator()
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='SplishScreen'>
+      <Stack.Navigator initialRouteName='homeScreen'>
         <Stack.Screen name='SplishScreen' component={SplishScreen} options={{ headerShown: false }} />
         <Stack.Screen name='loginScreen' component={LoginScreen} options={{ headerShown: false }} />
         <Stack.Screen name='homeScreen' component={HomeScreen} options={{headerShown:false}} />
@@ -27,6 +28,7 @@ const App = () => {
         <Stack.Screen name='SearchBar' component={SearchBar}/>
         <Stack.Screen name='Blog' component={Blog}/>
         <Stack.Screen name='TrackOrder' component={TrackOrder}/>
+        <Stack.Screen name='SingleProducts' component={SingleProducts}/>
       </Stack.Navigator>
     </NavigationContainer>
   )

@@ -1,4 +1,4 @@
-import { Alert, Button, FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useEffect, useState } from 'react';
 import { items } from '../Database/Database';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -7,7 +7,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import red from "../Assets/redwish.jpeg"
 const Drawer = createDrawerNavigator();
 import cart from "../Assets/CART.png"
-import Profile from './Profile';
 import SideMenu from '../Components/SideMenu';
 import Settings from './Settings';
 import Faq from './Faq';
@@ -18,9 +17,11 @@ import icons from "../Assets/widjlist.jpeg"
 import { useNavigation } from '@react-navigation/native';
 import TrackOrder from './TrackOrder';
 import Blog from './Blog';
-import SocialIcons from '../Components/SocialIcons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import WishList from './WishList';
+import SingleProducts from './SingleProducts';
+
+
 
 export default function App() {
   const navigation = useNavigation();
@@ -39,7 +40,8 @@ export default function App() {
   
     getCount(); // Call the function to retrieve the count when the component mounts or updates
   }, []); // Empty dependency array ensures that the effect runs only once after the component mounts
-  const wishList = async (item) => {
+
+    const wishList = async (item) => {
     try {
      
       let values = await AsyncStorage.getItem('wishItems');
@@ -77,6 +79,7 @@ export default function App() {
       console.log(error);
     }
   };
+  
 return (
     <NavigationContainer independent={true}>
       <Drawer.Navigator  drawerContent={(props) => <SideMenu {...props}/>}>
@@ -108,6 +111,7 @@ return (
         <Drawer.Screen name='Track Order' component={TrackOrder}/>
         <Drawer.Screen name='Blog' component={Blog}/>
         <Drawer.Screen name='Faq' component={Faq} />
+        <Drawer.Screen name='SingleProducts' component={SingleProducts}/>
         <Drawer.Screen name='wishList' component={WishList} options={{headerShown:true}}/>
       </Drawer.Navigator>
     </NavigationContainer>
@@ -115,6 +119,21 @@ return (
 }
 
 const HomeScreen = ({ navigation, wishList }) => {
+
+
+  const viewProduct = async (item) => {
+    try {
+      // Store the selected product in AsyncStorage
+      await AsyncStorage.setItem('products', JSON.stringify(item));
+  
+      // Pass the selected product as a prop when navigating to SingleProducts screen
+      navigation.navigate('SingleProducts', { product: item }); // Pass the product as a prop
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
+
   return (
     <View style={styles.container}>
 
@@ -134,6 +153,9 @@ const HomeScreen = ({ navigation, wishList }) => {
                 <Text style={styles.price}>₹ {item.price}/-</Text>
                 <Text style={styles.description}>{item.descriptions}</Text>
                 <View style={styles.buttonContainer}>
+                <TouchableOpacity style={styles.btn} onPress={() => viewProduct(item)}>
+                <Text>View</Text>
+                </TouchableOpacity>
                 </View>
               </View>
             )}
@@ -201,4 +223,13 @@ const styles = StyleSheet.create({
   buttonContainer: {
     marginBottom: 10,
   },
+  btn:{
+    borderWidth:1,
+    width:50,
+    height:30,
+    alignItems:"center",
+    justifyContent:"center",
+    borderRadius:5,
+    backgroundColor:"#ccf2ff"
+  }
 });

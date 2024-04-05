@@ -7,16 +7,16 @@ const WishList = ({navigation}) => {
 
   useEffect(() => {
     const unsubribe = navigation.addListener('focus', () => {
-      wishItem();
+      singleproducts();
     });
     return unsubribe;
   }, [navigation]);
 
-  const wishItem = async () => {
+  const singleproducts = async () => {
     try {
       const values = await AsyncStorage.getItem('wishItems');
       const wishItems = values ? JSON.parse(values) : [];
-      console.log("wishlistpage", wishItems);
+      //console.log("wishlistpage", wishItems);
       setWishItems(wishItems); // Set wishlist items in state
     } catch (error) {
       console.log(error);
