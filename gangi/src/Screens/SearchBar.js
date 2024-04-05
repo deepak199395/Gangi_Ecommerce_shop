@@ -24,6 +24,7 @@ const SearchBar = () => {
   const contents = ({ category }, text) => {
     return category.toLowerCase().includes(text.toLowerCase());
   };
+
   return (
     <View style={styles.container}>
       <TextInput
@@ -54,37 +55,54 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 10,
+    backgroundColor: '#f7f7f7',
   },
   searchInput: {
     width: '100%',
     borderWidth: 1,
-    borderRadius: 10,
-    padding: 10,
-    marginBottom: 10,
+    borderRadius: 8,
+    padding: 12,
+    marginBottom: 12,
+    backgroundColor: '#fff',
+    fontSize: 16,
+    color: '#333',
   },
   itemContainer: {
     flexDirection: 'row',
     marginBottom: 20,
+    backgroundColor: '#fff',
+    borderRadius: 8,
+    padding: 12,
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
   },
   image: {
-    width: 150,
-    height: 150,
-    marginRight: 10,
+    width: 100,
+    height: 100,
+    marginRight: 12,
+    borderRadius: 8,
   },
   textContainer: {
     flex: 1,
   },
   category: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: 'bold',
-    marginBottom: 5,
+    marginBottom: 6,
+    color: '#333',
   },
   price: {
     fontSize: 16,
     fontWeight: 'bold',
+    color: '#007bff',
+    marginBottom: 4,
   },
   model: {
     fontSize: 16,
+    color: '#555',
   },
 });
 

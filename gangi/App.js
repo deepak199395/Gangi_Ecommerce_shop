@@ -18,7 +18,7 @@ const App = () => {
   const Stack = createNativeStackNavigator()
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='homeScreen'>
+      <Stack.Navigator initialRouteName='SplishScreen'>
         <Stack.Screen name='SplishScreen' component={SplishScreen} options={{ headerShown: false }} />
         <Stack.Screen name='loginScreen' component={LoginScreen} options={{ headerShown: false }} />
         <Stack.Screen name='homeScreen' component={HomeScreen} options={{headerShown:false}} />
