@@ -14,6 +14,7 @@ import SearchBar from './src/Screens/SearchBar';
 import Blog from './src/Screens/Blog';
 import TrackOrder from './src/Screens/TrackOrder';
 import SingleProducts from './src/Screens/SingleProducts';
+import MyCartScreen from './src/Screens/MyCartScreen';
 
 const App = () => {
   const Stack = createNativeStackNavigator()
@@ -29,6 +30,7 @@ const App = () => {
         <Stack.Screen name='Blog' component={Blog}/>
         <Stack.Screen name='TrackOrder' component={TrackOrder}/>
         <Stack.Screen name='SingleProducts' component={SingleProducts}/>
+        <Stack.Screen name='MyCartScreen' component={MyCartScreen} options={{headerShown:false}}/>
       </Stack.Navigator>
     </NavigationContainer>
   )

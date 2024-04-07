@@ -20,6 +20,7 @@ import Blog from './Blog';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import WishList from './WishList';
 import SingleProducts from './SingleProducts';
+import MyCartScreen from './MyCartScreen';
 
 
 
@@ -87,7 +88,7 @@ return (
       <Drawer.Screen name="homeScreen"  options={{headerRight: () => (
         <View style={styles.headericons}>
 
-          <TouchableOpacity onPress={() => navigation.navigate("CartScreen")} >
+          <TouchableOpacity onPress={() => navigation.navigate("MyCartScreen")} >
             <Image source={cart} style={{ width: 60, height: 50, marginTop: 5 }}/>
           </TouchableOpacity>
 
@@ -112,6 +113,7 @@ return (
         <Drawer.Screen name='Blog' component={Blog}/>
         <Drawer.Screen name='Faq' component={Faq} />
         <Drawer.Screen name='SingleProducts' component={SingleProducts}/>
+        <Drawer.Screen name='MyCartScreen' component={MyCartScreen} options={{headerShown:true}}/>
         <Drawer.Screen name='wishList' component={WishList} options={{headerShown:true}}/>
       </Drawer.Navigator>
     </NavigationContainer>
